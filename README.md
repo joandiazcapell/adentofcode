@@ -1,6 +1,15 @@
 # AdventOfCode
 
-**TODO: Add description**
+# Advent of code 2024
+
+Doing my best into functional programming and, in this case, Elixir.
+
+
+## Progress
+
+| Day | Part 1 | Part 2 |
+|-----|--------|--------|
+| 1   | 🌟     | 🌟     |
 
 
 ## Installation
