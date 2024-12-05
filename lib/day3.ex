@@ -10,33 +10,10 @@ defmodule Day3 do
   def solve_part1 do
     input = GetInput.get_input(@year, @day)
 
-    input
-    |> extract_mult_operations()
-    |> Stream.map(&compute_product/1)
-    |> Enum.sum()
+    Regex.scan(~r/mul\((\d{1,3}),(\d{1,3})\)/, input, capture: :all_but_first)
+    |> Enum.reduce(0, fn [a, b], acc -> acc + String.to_integer(a) * String.to_integer(b) end)
   end
 
-  defp extract_mult_operations(input) do
-    regex_mul = ~r/mul\(\d{1,3},\d{1,3}\)/
-
-    Regex.scan(regex_mul, input)
-    |> Stream.flat_map(&extract_numbers/1)
-  end
-
-  defp extract_numbers([sub_string]) do
-    regex_nums = ~r/\d{1,3},\d{1,3}/
-
-    Regex.scan(regex_nums, sub_string)
-    |> Stream.map(&parse_and_convert_to_numbers/1)
-  end
-
-  defp parse_and_convert_to_numbers([number_pair]) do
-    number_pair
-    |> String.split(",")
-    |> Enum.map(&String.to_integer/1)
-  end
-
-  defp compute_product(numbers) do
-    Enum.reduce(numbers, 1, &Kernel.*/2)
+  def solve_part2 do
   end
 end
