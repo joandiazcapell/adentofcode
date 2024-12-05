@@ -15,5 +15,26 @@ defmodule Day3 do
   end
 
   def solve_part2 do
+    input = GetInput.get_input(@year, @day)
+
+    Regex.scan(~r/mul\((-?\d+),(-?\d+)\)|do(?:n't)?\(\)/, input)
+    |> Enum.reduce({0, :enable}, fn
+      ["don't()"], {count, _status} ->
+        {count, :disable}
+
+      ["do()"], {count, _status} ->
+        {count, :enable}
+
+      [_mul, a, b], {count, :enable} ->
+        result = count + String.to_integer(a) * String.to_integer(b)
+        {result, :enable}
+
+      [_mul, _a, _b], {count, :disable} ->
+        {count, :disable}
+    end)
+    |> case do
+      {result, :disable} -> result
+      {result, :enable} -> result
+    end
   end
 end
