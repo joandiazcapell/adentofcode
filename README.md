@@ -12,7 +12,8 @@ Doing my best into functional programming and, in this case, Elixir.
 | 1   | 🌟     | 🌟     |
 | 2   | 🌟     | 🌟     |
 | 3   | 🌟     | 🌟     |
-| 4   |       |       |
+| 4   | 🌟     | 🌟     |
+| 5   |       |       |
 
 
 ## Installation
